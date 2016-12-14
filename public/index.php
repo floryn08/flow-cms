@@ -3,7 +3,7 @@
 
 <html lang="en">
 	<head>
-		<title>untitled</title>
+		<title>Index</title>
 	</head>
 	<body>
 
