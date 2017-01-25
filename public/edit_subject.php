@@ -109,7 +109,8 @@ if (isset($_POST['submit'])) {
             <input type="submit" name="submit" value="Edit Subject" />
         </form>
         <br />
-        <a href="manage_content.php">Cancel</a>
+        <a href="manage_content.php">Cancel</a> <br><br>
+        <a href="delete_subject.php?subject=<?php echo $current_subject["id"]; ?>" onclick="return confirm('Are you sure?');">Delete subject</a>
     </div>
 </div>
 
