@@ -21,6 +21,21 @@
             Visible: <?php echo htmlentities($current_subject["visible"] == 1 ? 'yes' : 'no'); ?><br />
             <br />
             <a href="edit_subject.php?subject=<?php echo urlencode($current_subject["id"]); ?>">Edit subject</a>
+            <br /><br />
+            <h2>Pages in this subject:</h2> 
+            <ul>
+                <?php
+                $subject_pages = find_pages_for_subject($current_subject["id"]);
+                while ($page = mysqli_fetch_assoc($subject_pages)) {
+                    echo "<li>";
+                    $safe_page_id = urlencode($page["id"]);
+                    echo "<a href=\"manage_content.php?page={$safe_page_id}\">";
+                    echo htmlentities($page["menu_name"]);
+                    echo "</a>";
+                    echo "</li>";
+                }
+                ?>
+            </ul>
 
         <?php } elseif ($current_page) { ?>
             <h2>Manage Page</h2>
