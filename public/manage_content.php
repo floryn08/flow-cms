@@ -36,6 +36,7 @@
                 }
                 ?>
             </ul>
+            <a href="new_page.php?subject=<?php echo urldecode($current_subject["id"]); ?>">+ Add a new page to this subject</a>
 
         <?php } elseif ($current_page) { ?>
             <h2>Manage Page</h2>
@@ -46,6 +47,8 @@
             <div class="view-content">
                 <?php echo htmlentities($current_page["content"]); ?>
             </div>
+            <br>
+            <a href="edit_page.php?page=<?php echo urlencode($current_page["id"]); ?>">Edit page</a>
         <?php } else { ?>
             Please select a subject or a page.
         <?php } ?>
