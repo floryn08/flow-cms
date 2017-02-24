@@ -20,8 +20,8 @@ if (isset($_POST['submit'])) {
     // Process the form
     $id = $current_page["id"];
     $menu_name = mysql_prep($_POST["menu_name"]);
-    $position = (int) $_POST["position"];
-    $visible = (int) $_POST["visible"];
+    $position = (int)$_POST["position"];
+    $visible = (int)$_POST["visible"];
     $content = mysql_prep($_POST["content"]);
 
     // validations
@@ -59,9 +59,6 @@ if (isset($_POST['submit'])) {
 ?>
 
 
-
-
-
 <div id="main">
     <div id="navigation">
         <?php echo navigation($current_subject, $current_page); ?>
@@ -73,7 +70,7 @@ if (isset($_POST['submit'])) {
         <h2>Edit Page: <?php echo htmlentities($current_page["menu_name"]); ?></h2>
         <form action="edit_page.php?page=<?php echo urlencode($current_page["id"]); ?>" method="post">
             <p>Menu name:
-                <input type="text" name="menu_name" value="<?php echo htmlentities($current_page["menu_name"]); ?>" />
+                <input type="text" name="menu_name" value="<?php echo htmlentities($current_page["menu_name"]); ?>"/>
             </p>
             <p>Position:
                 <select name="position">
@@ -91,30 +88,31 @@ if (isset($_POST['submit'])) {
                 </select>
             </p>
             <p>Visible:
-                <input type="radio" name="visible" value="0"  
-                <?php
-                if ($current_page["visible"] == 0) {
-                    echo "checked";
-                }
-                ?>/> No
+                <input type="radio" name="visible" value="0"
+                    <?php
+                    if ($current_page["visible"] == 0) {
+                        echo "checked";
+                    }
+                    ?>/> No
                 &nbsp;
-                <input type="radio" name="visible" value="1" 
-                <?php
-                if ($current_page["visible"] == 1) {
-                    echo "checked";
-                }
-                ?> /> Yes
+                <input type="radio" name="visible" value="1"
+                    <?php
+                    if ($current_page["visible"] == 1) {
+                        echo "checked";
+                    }
+                    ?> /> Yes
             </p>
-            <p>Content: <br />
+            <p>Content: <br/>
                 <textarea name="content"><?php
                     echo htmlentities($current_page["content"]);
                     ?></textarea>
             </p>
-            <input type="submit" name="submit" value="Edit Page" />
+            <input type="submit" name="submit" value="Edit Page"/>
         </form>
-        <br />
+        <br/>
         <a href="manage_content.php">Cancel</a> <br><br>
-        <a href="delete_page.php?page=<?php echo urlencode($current_page["id"]); ?>" onclick="return confirm('Are you sure?');">Delete page</a>
+        <a href="delete_page.php?page=<?php echo urlencode($current_page["id"]); ?>"
+           onclick="return confirm('Are you sure?');">Delete page</a>
     </div>
 </div>
 
