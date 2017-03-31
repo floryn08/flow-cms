@@ -11,6 +11,7 @@ if (!$current_page) {
     redirect_to("manage_content.php");
 }
 ?>
+<?php $layout_context = "admin"; ?>
 <?php include("../includes/layouts/header.php"); ?>
 
 
