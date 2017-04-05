@@ -3,8 +3,7 @@ if (!isset($layout_context)) {
     $layout_context = "public";
 }
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -14,8 +13,27 @@ if (!isset($layout_context)) {
     <link href="stylesheets/public.css" media="all" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<div id="header">
-    <h1>Widget Corp <?php if ($layout_context == "admin") {
-            echo "Admin";
-        } ?></h1>
-</div>
+<header id="header">
+    <?php
+    /**
+     * incearca si cu png, poate merge mai bine
+     */
+    if ($layout_context != "admin") { ?>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <defs>
+                <pattern id='image' width="1" height="1" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <image xlink:href='images/header.jpg' width="100" height="100" preserveAspectRatio="none"></image>
+                </pattern>
+            </defs>
+            <polygon class="svg--lg" points="0 0,100 0,100 70,50 100, 0 70">
+
+            </polygon>
+
+        </svg>
+    <?php } else { ?>
+
+        <h1>Widget Corp <?php if ($layout_context == "admin") {
+                echo "Admin";
+            } ?></h1>
+    <?php } ?>
+</header>
