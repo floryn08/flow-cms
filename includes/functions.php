@@ -221,7 +221,7 @@ function public_navigation($subject_array, $page_array) {
 function find_all_admins() {
     global $connection;
 
-    $query  = "SELECT * ";
+    $query = "SELECT * ";
     $query .= "FROM admins ";
     $query .= "ORDER BY username ASC";
     $admin_set = mysqli_query($connection, $query);
@@ -234,16 +234,108 @@ function find_admin_by_id($admin_id) {
 
     $safe_admin_id = mysqli_real_escape_string($connection, $admin_id);
 
-    $query  = "SELECT * ";
+    $query = "SELECT * ";
     $query .= "FROM admins ";
     $query .= "WHERE id = {$safe_admin_id} ";
     $query .= "LIMIT 1";
     $admin_set = mysqli_query($connection, $query);
     confirm_query($admin_set);
-    if($admin = mysqli_fetch_assoc($admin_set)) {
+    if ($admin = mysqli_fetch_assoc($admin_set)) {
         return $admin;
     } else {
         return null;
+    }
+}
+
+function password_encrypt($password) {
+    $hash_format = "$2y$10$"; //Blowfish
+
+    $salt_length = 22; //Blowfish salt trebe sa fie de min 22 caractere
+
+    $salt = generate_salt($salt_length);
+
+    $format_and_salt = $hash_format . $salt;
+
+    $hash = crypt($password, $format_and_salt);
+
+    return $hash;
+
+}
+
+function generate_salt($length) {
+    /**
+     * genereaza un random string
+     * MD5 returneaza 32 de caractere
+     */
+    $unique_random_string = md5(uniqid(mt_rand(), true));
+    /**
+     * caractere valide pentru salt sunt [a-zA-Z0-9./]
+     */
+    $base64_string = base64_encode($unique_random_string);
+    /**
+     * '+' nu este valid pentru salt
+     */
+    $modified_base64_string = str_replace('+', '.', $base64_string);
+    /**
+     * reduce stringul la lungimea corecta
+     */
+    $salt = substr($modified_base64_string, 0, $length);
+
+    return $salt;
+}
+
+function password_check($password, $existing_hash) {
+    $hash = crypt($password, $existing_hash);
+    if ($hash === $existing_hash) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+function find_admin_by_username($username) {
+    global $connection;
+
+    $safe_username = mysqli_real_escape_string($connection, $username);
+
+    $query = "SELECT * ";
+    $query .= "FROM admins ";
+    $query .= "WHERE username = '{$safe_username}' ";
+    $query .= "LIMIT 1";
+    $admin_set = mysqli_query($connection, $query);
+    confirm_query($admin_set);
+    if ($admin = mysqli_fetch_assoc($admin_set)) {
+        return $admin;
+    } else {
+        return null;
+    }
+}
+
+function attempt_login($username, $password) {
+    $admin = find_admin_by_username($username);
+    if ($admin) {
+        //found admin, now check pass
+        if (password_check($password, $admin["hashed_password"])) {
+            //password match
+            return $admin;
+        } else {
+            return false;
+        }
+    } else {
+        //admin not found
+        return false;
+    }
+}
+
+function logged_in() {
+    return isset($_SESSION['admin_id']);
+}
+
+
+function confirm_logged_in() {
+    if (!logged_in()) {
+        redirect_to("login.php");
     }
 }
 

@@ -1,6 +1,7 @@
 <?php require_once("../includes/session.php"); ?>
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
+<?php confirm_logged_in(); ?>
 
 <?php
 $admin_set = find_all_admins();
@@ -10,7 +11,9 @@ $admin_set = find_all_admins();
 <?php include("../includes/layouts/header.php"); ?>
 <div id="main">
     <div id="navigation">
-        &nbsp;
+        <br>
+        <a href="admin.php">&laquo; Main Menu</a><br>
+
     </div>
     <div id="page">
         <?php echo message(); ?>
@@ -31,24 +34,7 @@ $admin_set = find_all_admins();
         </table>
         <br/>
         <a href="new_admin.php">Add new admin</a>
-        <hr/>
-        <?php
-        $password = "secret2";
-        $hash_format = "$2y$10$";
-        $salt = "Salt22CharactersOrMore";
-        echo "Length: " . strlen($salt);
-        $format_and_salt = $hash_format . $salt;
 
-        $hash = crypt($password, $format_and_salt);
-        echo "<br>";
-        echo "<hr/>";
-        echo $hash;
-
-        $hash2 = crypt("secret2", $hash);
-        echo "<br>";
-        echo "<hr/>";
-        echo $hash2;
-        ?>
     </div>
 </div>
 
