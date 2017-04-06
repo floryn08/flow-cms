@@ -179,7 +179,9 @@ function navigation($subject_array, $page_array) {
 }
 
 function public_navigation($subject_array, $page_array) {
-    $output = "<ul class=\"subjects\">";
+    $output = "<nav class=\"st-menu st-effect-2\" id=\"menu-2\">";
+    $output .= "<h2 class=\"menu-title\">Menu</h2>";
+    $output .= "<ul class=\"subjects\">";
     $subject_set = find_all_subjects();
     while ($subject = mysqli_fetch_assoc($subject_set)) {
         $output .= "<li";
@@ -213,8 +215,10 @@ function public_navigation($subject_array, $page_array) {
         $output .= "</li>";
 
     }
+    $output .= "<li><a href='admin.php'>Admin</a></li>";
     mysqli_free_result($subject_set);
     $output .= "</ul>";
+    $output .= "</nav>";
     return $output;
 }
 

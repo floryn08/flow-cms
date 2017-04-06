@@ -6,11 +6,11 @@
 <?php find_selected_page(true); ?>
 
 <div id="main">
-    <!--    <div id="navigation">-->
-    <!---->
-    <!--        --><?php //echo public_navigation($current_subject, $current_page); ?>
-    <!---->
-    <!--    </div>-->
+<!--        <div id="navigation">-->
+<!---->
+<!--            --><?php //echo public_navigation($current_subject, $current_page); ?>
+<!---->
+<!--        </div>-->
     <div id="page" class="container">
 
         <?php if ($current_page) { ?>
