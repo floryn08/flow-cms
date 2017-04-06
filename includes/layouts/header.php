@@ -16,10 +16,10 @@ if (!isset($layout_context)) {
     <script src="dist/jquery-3.2.0.min.js" type="text/javascript"></script>
     <script src="dist/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="dist/parallax.js/parallax.min.js" type="text/javascript"></script>
-    <script src="javascripts/scripts.js" type="text/javascript"></script>
+    <script src="js/scripts.js" type="text/javascript"></script>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet">
     <link href="dist/bootstrap/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css"/>
-    <link href="stylesheets/public.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="css/public.css" media="all" rel="stylesheet" type="text/css"/>
 </head>
 <body class="container-fluid nopadding">
 
