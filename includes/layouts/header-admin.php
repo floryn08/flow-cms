@@ -32,7 +32,7 @@ if (!isset($layout_context)) {
         </svg>
     <?php } else { ?>
 
-        <h1>Widget Corp <?php if ($layout_context == "admin") {
+        <h1>Flow CMS <?php if ($layout_context == "admin") {
                 echo "Admin";
             } ?></h1>
     <?php } ?>

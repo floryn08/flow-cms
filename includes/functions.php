@@ -194,7 +194,7 @@ function public_navigation($subject_array, $page_array) {
         $output .= "\">";
         $output .= htmlentities($subject["menu_name"]);
         $output .= "</a>";
-        if ($subject_array["id"] == $subject["id"] || $page_array["subject_id"] == $subject["id"]) {
+//        if ($subject_array["id"] == $subject["id"] || $page_array["subject_id"] == $subject["id"]) {
             $page_set = find_pages_for_subject($subject["id"]);
             $output .= "<ul class=\"pages\">";
             while ($page = mysqli_fetch_assoc($page_set)) {
@@ -211,7 +211,7 @@ function public_navigation($subject_array, $page_array) {
             }
             $output .= "</ul>";
             mysqli_free_result($page_set);
-        }
+//        }
         $output .= "</li>";
 
     }
