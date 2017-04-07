@@ -15,7 +15,7 @@ if (!isset($layout_context)) {
 <body>
 <header id="header">
     <?php
-    /**
+    /**    aa
      * incearca si cu png, poate merge mai bine
      */
     if ($layout_context != "admin") { ?>
