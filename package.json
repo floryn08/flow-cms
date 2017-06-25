@@ -1,0 +1,33 @@
+{
+  "name": "flow-cms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "public/index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/floryn08/flow-cms.git"
+  },
+  "author": "Florin Vasilica",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/floryn08/flow-cms/issues"
+  },
+  "homepage": "https://github.com/floryn08/flow-cms#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-header": "^1.8.8",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.1.2",
+    "gulp-watch": "^4.3.11",
+    "jquery": "^3.2.1"
+  },
+  "devDependencies": {
+    "webpack": "^2.4.1"
+  }
+}
